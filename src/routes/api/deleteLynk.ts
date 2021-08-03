@@ -33,9 +33,7 @@ export default function deleteLynk(
 				res.send('Deleted lynk.');
 			} else {
 				res.status(404);
-				res.send(
-					`Cannot delete lynk. Cannot find lynk with id ${lynkID}.`
-				);
+				res.send('Cannot delete lynk. Cannot find lynk with that id.');
 			}
 
 			await lynkDB.write();
