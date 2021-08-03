@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: rgb(41, 51, 65);
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 1.5px;
+}
+
+.custom-form {
+	margin-top: 15%;
+}
+
+.toggle-border {
+	color: #8b8c8c;
+}
+
+.custom-form input[type='text'] {
+	background-color: rgb(17, 21, 27);
+	border: none;
+	color: #8b8c8c;
+	margin-right: 0.3%;
+}
+
+.custom-form input[type='text']:focus {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+}
+.custom-form input[type='text']:hover {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+}
+
+.custom-form input[type='submit'] {
+	background-color: rgb(17, 21, 27);
+	border: none;
+	color: #8b8c8c;
+}
+
+.custom-form input[type='submit']:focus {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+.custom-form input[type='submit']:active {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+.custom-form input[type='submit']:hover {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+
+.custom-form input::placeholder {
+	color: #8b8c8c;
+}
+
+.custom-navbar {
+	background-color: rgb(12, 14, 19);
+	color: #8b8c8c;
+}
+
+.a-color {
+	color: #8b8c8c !important;
+}
+
+.a-color:hover {
+	color: #b9b9b9 !important;
+}
+
+.a-color-none {
+	color: #8b8c8c !important;
+}
+
+@media only screen and (max-width: 575) {
+	.custom-form input[type='text'] {
+		margin-bottom: 3% !important;
+	}
+}
+
+.result {
+	color: #8b8c8c;
+	text-decoration: none;
+}
+
+.result::after {
+	color: #b9b9b9;
+	text-decoration: none;
+}
+
+.result:hover {
+	color: #b9b9b9;
+	text-decoration: none;
+}

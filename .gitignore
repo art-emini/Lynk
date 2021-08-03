@@ -1,0 +1,11 @@
+# Build
+dist
+
+# Database
+db
+
+# Depenedencies
+node_modules
+
+# Tests as it includes private api key(s)
+test

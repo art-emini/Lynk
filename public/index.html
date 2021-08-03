@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lynk</title>
+		<link
+			rel="shortcut icon"
+			href="./assets/icon.png"
+			type="image/x-icon"
+		/>
+
+		<script src="./js/packages/socket.io.min.js"></script>
+		<script src="./js/packages/axios.min.js"></script>
+
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+			<a class="navbar-brand a-color-none">Lynk</a>
+
+			<div>
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link a-color" id="accountPage">Account</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link a-color" href="#">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link a-color" id="loginPage" href="#"
+							>Login</a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link a-color" id="signUpPage" href="#"
+							>Sign Up</a
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-center">
+			<form
+				class="
+					form-inline
+					justify-content-center
+					d-flex
+					align-items-center
+					custom-form
+				"
+				action=""
+				method="post"
+			>
+				<input
+					type="text"
+					placeholder="URL"
+					name="redirectLink"
+					id="redirectLink"
+					class="form-control"
+					title="URL to Shorten"
+					autocapitalize="false"
+					required
+				/>
+				<input class="btn btn-default" type="submit" value="Shrink" />
+			</form>
+			<br /><br />
+			<a id="result" class="result" target="_blank" href=""></a>
+		</div>
+
+		<script src="./js/index.js"></script>
+	</body>
+</html>
