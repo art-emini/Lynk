@@ -9,7 +9,7 @@ export default function account(
 	app: express.Application,
 	userDB: Low<Types.User[]>
 ) {
-	app.get('/account/:token/:page', async (req, res) => {
+	app.get('/account/:token/:page', accountViewLimiter, async (req, res) => {
 		const token = req.params.token;
 		const page = req.params.page;
 
