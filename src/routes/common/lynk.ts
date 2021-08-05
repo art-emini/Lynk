@@ -8,7 +8,7 @@ export default function lynk(
 	app: express.Application,
 	lynkDB: Low<Types.Lynk[]>
 ) {
-	app.get('/url/:lynkID', lynkViewLimiter, async (req, res) => {
+	app.get('/:lynkID', lynkViewLimiter, async (req, res) => {
 		const lynkID = req.params.lynkID;
 
 		const source = req.query.source;
@@ -23,6 +23,8 @@ export default function lynk(
 				date: currentDate,
 				visits: 1,
 				sources: [],
+				parentRedirect: lynk.redirectUrl,
+				parentURL: lynk.url,
 			};
 
 			lynkDB.data.find((l) => l.id === lynkID).meta.visits += 1;
@@ -61,7 +63,7 @@ export default function lynk(
 			res.redirect(lynk.redirectUrl);
 		} else {
 			res.status(404);
-			res.redirect('/404');
+			res.redirect('/pages/404.html');
 			return;
 		}
 	});

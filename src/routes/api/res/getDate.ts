@@ -1,38 +1,45 @@
 import * as express from 'express';
 import { Low } from '../../../packages/lowdb';
 import Types from '../../../types/types';
-import getAverage from '../../../utils/getAverage';
 
-export default function getStats(
+export default function getDate(
 	app: express.Application,
 	lynkDB: Low<Types.Lynk[]>,
 	userDB: Low<Types.User[]>
 ) {
-	app.post('/api/res/getStats', async (req, res) => {
+	app.post('/api/res/getDate', async (req, res) => {
 		const token = req.body.token;
+		const date = req.body.date;
 
 		await userDB.read();
 
 		const foundUser = userDB.data.find((u) => u.token === token);
 
 		if (foundUser) {
-			// get all of their lynks
 			await lynkDB.read();
 			await userDB.read();
 
-			const lynks = lynkDB.data.filter((l) => l.ownerID === foundUser.id);
+			const lynksF = lynkDB.data.filter(
+				(l) => l.ownerID === foundUser.id
+			);
+			const days: Types.Day[] = [];
+
 			let totalVisits = 0;
 
-			for await (const lynk of lynks) {
-				totalVisits += lynk.meta.visits;
+			for await (const lynk of lynksF) {
+				const day = lynk.meta.dayStats.find((d) => d.date === date);
+
+				if (day) {
+					days.push(day);
+					totalVisits += day.visits;
+				}
 			}
 
 			res.status(200);
 			res.json({
-				lynks,
+				days,
 				totalVisits,
 			});
-			res.end();
 		} else {
 			res.status(403);
 			res.send('Invalid Login.');

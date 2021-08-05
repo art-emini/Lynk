@@ -17,6 +17,8 @@ socket.on('console', (msg) => console.log(msg));
 			token: sessionToken,
 		});
 		console.log('Logged in.');
+		loginPage.style.display = 'none';
+		signupPage.style.display = 'none';
 	} catch (error) {
 		localStorage.setItem('lynk-security-session-token', undefined);
 		console.log('Invalid Login. Set session token as undefined.');
@@ -38,11 +40,6 @@ form.onsubmit = async (e) => {
 	}
 };
 
-accountPage.href = location.href + `account/${sessionToken}`;
-
-if (sessionToken) {
-	loginPage.style.display = 'none';
-	signupPage.style.display = 'none';
-}
+accountPage.href = location.href + `account/${sessionToken}/analytics`;
 
 io = undefined;

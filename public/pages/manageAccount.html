@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lynk - Manage Account</title>
+		<link
+			rel="shortcut icon"
+			href="../../assets/icon.png"
+			type="image/x-icon"
+		/>
+
+		<script src="../../js/packages/socket.io.min.js"></script>
+		<script src="../../js/packages/axios.min.js"></script>
+
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="../../css/style.css" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+			<a class="navbar-brand a-color" href="/">Lynk</a>
+
+			<div>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link a-color" id="analyticsPage"
+							>Analytics</a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link a-color" id="lynksPage" href="/lynks"
+							>Lynks</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link a-color"
+							id="createLynkPage"
+							href="/createLynk"
+							>Create Lynk</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link a-color"
+							id="manageLynksPage"
+							href="/manageLynks"
+							>Manage Lynks</a
+						>
+					</li>
+					<li class="nav-item active">
+						<a
+							class="nav-link a-color-none"
+							id="manageAccountPage"
+							href="/manageAccount"
+							>Manage Account</a
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-center">
+			<div
+				class="
+					justify-content-center
+					d-flex
+					align-items-center
+					m-lg-5
+					flex-column
+				"
+			>
+				<h1 id="pageHeader">Manage Account</h1>
+				<div class="mt-lg-5">
+					<h3 class="mb-lg-5">Options</h3>
+
+					<button
+						class="btn btn-warning mb-lg-3"
+						id="logOutBTN"
+						onclick="logOut()"
+					>
+						Log out
+					</button>
+
+					<br />
+
+					<button
+						class="btn btn-danger mb-lg-3"
+						onclick="deleteAccount()"
+						data-toggle="modal"
+						data-target="#exampleModal"
+						type="button"
+						id="deleteBTN"
+					>
+						Delete Account
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="hidden" id="formConfirmContainer">
+			<form
+				class="
+					form-inline
+					justify-content-center
+					d-flex
+					align-items-center
+					custom-form
+				"
+				id="formDelete"
+			>
+				<div class="form-group mr-sm-2">
+					<input
+						type="email"
+						class="form-control textInput"
+						id="emailInput"
+						aria-describedby="emailHelp"
+						placeholder="Enter email"
+						required
+					/>
+				</div>
+				<div class="form-group mr-sm-2">
+					<input
+						type="password"
+						class="form-control textInput"
+						id="passwordInput"
+						placeholder="Password"
+						required
+					/>
+				</div>
+				<button
+					type="submit"
+					id="confirmDeleteBTN"
+					class="btn btn-danger"
+				>
+					Confirm
+				</button>
+			</form>
+		</div>
+
+		<script src="../../js/account.js"></script>
+	</body>
+</html>

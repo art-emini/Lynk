@@ -3,6 +3,7 @@ import { createLynkLimiter } from '../../middleware/rateLimit';
 import { Low } from '../../packages/lowdb';
 import Types from '../../types/types';
 import randomID from '../../utils/randomID';
+import validateURL from '../../utils/validURL';
 
 export default function createLynk(
 	app: express.Application,
@@ -15,8 +16,13 @@ export default function createLynk(
 
 		if (typeof redirectUrl !== 'string') {
 			res.status(400);
-			res.send('Invalid Body. Redirect url is missing.');
+			res.send('Invalid Body. Redirect url is missing or invalid.');
 			return;
+		}
+
+		if (!validateURL(redirectUrl)) {
+			res.status(400);
+			res.send('Invalid URL.');
 		}
 
 		// login with token
@@ -26,19 +32,16 @@ export default function createLynk(
 		const fUser = userDB.data.find((u) => u.token === token);
 
 		if (fUser) {
-			const lynkID = randomID(10);
+			const lynkID = randomID(6);
 			const lynk: Types.Lynk = {
 				ownerID: fUser.id,
 				id: lynkID,
 				redirectUrl,
 				url:
 					new URL(req.url, `http://${req.headers.host}`).origin +
-					`/url/${lynkID}`,
+					`/${lynkID}`,
 				meta: {
-					dateCreated:
-						new Date().toDateString() +
-						' - ' +
-						new Date().toTimeString(),
+					dateCreated: new Date().toDateString(),
 					visits: 0,
 					sources: [],
 					dayStats: [],

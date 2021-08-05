@@ -20,6 +20,45 @@ body {
 	color: #8b8c8c;
 }
 
+.textInput {
+	background-color: rgb(17, 21, 27);
+	border: none;
+	color: #8b8c8c;
+	margin-right: 0.3%;
+}
+
+.textInput:focus {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+	border: none;
+	color: #8b8c8c;
+	margin-right: 0.3%;
+}
+.textInput:hover {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+	border: none;
+	color: #8b8c8c;
+	margin-right: 0.3%;
+}
+
+.buttonCustom {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+.buttonCustom:focus {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+.buttonCustom:active {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+.buttonCustom:hover {
+	box-shadow: 0px 0px 5px 2px rgb(17, 21, 27);
+	background-color: rgb(17, 21, 27);
+}
+
 .custom-form input[type='text'] {
 	background-color: rgb(17, 21, 27);
 	border: none;
@@ -53,7 +92,7 @@ body {
 	background-color: rgb(17, 21, 27);
 }
 
-.custom-form input::placeholder {
+input::placeholder {
 	color: #8b8c8c;
 }
 
@@ -93,4 +132,8 @@ body {
 .result:hover {
 	color: #b9b9b9;
 	text-decoration: none;
+}
+
+.hidden {
+	display: none;
 }

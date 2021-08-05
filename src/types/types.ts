@@ -15,6 +15,8 @@ namespace Types {
 		date: string;
 		visits: number;
 		sources: string[];
+		parentURL: string;
+		parentRedirect: string;
 	}
 
 	export interface Lynk {

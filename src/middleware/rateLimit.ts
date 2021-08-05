@@ -15,10 +15,10 @@ export const createLynkLimiter = rateLimit({
 });
 
 export const deleteLynkLimiter = rateLimit({
-	windowMs: 1000 * 60 * 15,
+	windowMs: 1000 * 60 * 10,
 	max: 15,
 	message:
-		'You have reached the max amount of deleteLynk calls in 15 minutes. Please try again later.',
+		'You have reached the max amount of deleteLynk calls in 10 minutes. Please try again later.',
 });
 
 export const deleteUserLimiter = rateLimit({
@@ -40,4 +40,18 @@ export const lynkViewLimiter = rateLimit({
 	max: 10,
 	message:
 		'You have reached the max amount of lynkView calls in 15 minutes. Please try again later.',
+});
+
+export const accountViewLimiter = rateLimit({
+	windowMs: 1000 * 60 * 10,
+	max: 20,
+	message:
+		'You have reached the max amount of account calls in 15 minutes. Please try again later.',
+});
+
+export const editLynkLimiter = rateLimit({
+	windowMs: 1000 * 60 * 10,
+	max: 10,
+	message:
+		'You have reached the max amount of editLynk calls in 10 minutes. Please try again later.',
 });

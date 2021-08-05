@@ -33,7 +33,7 @@ export default function deleteMass(
 				await lynkDB.write();
 			}
 
-			res.status(204);
+			res.status(200);
 			res.send('Deleted lynks.');
 		} else {
 			res.status(403);

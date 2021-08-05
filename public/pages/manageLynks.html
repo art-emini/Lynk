@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lynk - Manage Lynks</title>
+		<link
+			rel="shortcut icon"
+			href="../../assets/icon.png"
+			type="image/x-icon"
+		/>
+
+		<script src="../../js/packages/socket.io.min.js"></script>
+		<script src="../../js/packages/axios.min.js"></script>
+
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="../../css/style.css" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+			<a class="navbar-brand a-color" href="/">Lynk</a>
+
+			<div>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link a-color" id="analyticsPage"
+							>Analytics</a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link a-color" id="lynksPage" href="/lynks"
+							>Lynks</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link a-color"
+							id="createLynkPage"
+							href="/createLynk"
+							>Create Lynk</a
+						>
+					</li>
+					<li class="nav-item active">
+						<a
+							class="nav-link a-color-none"
+							id="manageLynksPage"
+							href="/manageLynks"
+							>Manage Lynks</a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link a-color"
+							id="manageAccountPage"
+							href="/manageAccount"
+							>Manage Account</a
+						>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-center">
+			<div
+				class="
+					justify-content-center
+					d-flex
+					align-items-center
+					m-lg-5
+					flex-column
+				"
+			>
+				<h1 id="pageHeader">Manage Lynks</h1>
+				<div class="mt-lg-5">
+					<table
+						id="analyticsTable"
+						class="table table-dark table-striped"
+					>
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Lynk</th>
+								<th scope="col">Redirect Link</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody id="tableBodyAnalytics"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/account.js"></script>
+	</body>
+</html>

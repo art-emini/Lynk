@@ -62,7 +62,7 @@ export default function deleteUser(
 
 				await lynkDB.write();
 
-				res.status(204);
+				res.status(200);
 				res.redirect('/');
 			} else {
 				res.status(403);

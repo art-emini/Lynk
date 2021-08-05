@@ -29,7 +29,7 @@ export default function deleteLynk(
 					1
 				);
 
-				res.status(204);
+				res.status(200);
 				res.send('Deleted lynk.');
 			} else {
 				res.status(404);
