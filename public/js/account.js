@@ -50,7 +50,7 @@ const passwordInput = document.getElementById('passwordInput');
 		console.error(error);
 		localStorage.setItem('lynk-security-session-token', undefined);
 		console.log('Invalid Login. Set session token as undefined.');
-		location.href = location.origin + '/login';
+		location.href = location.origin + '/pages/login';
 	}
 	// get stats
 
@@ -209,7 +209,12 @@ const passwordInput = document.getElementById('passwordInput');
 					let link = res.data.replace('Created Lynk. ', '');
 
 					if (sourceInput.value.trim().length > 0) {
-						link += `/?source=${sourceInput.value}`;
+						const str = link;
+						str.substr(-1);
+						if (str === '/') {
+							link = link.slice(0, -1);
+						}
+						link += `?source=${sourceInput.value}`;
 					}
 
 					result.innerHTML = link;
@@ -265,6 +270,62 @@ const passwordInput = document.getElementById('passwordInput');
 			}
 			break;
 
+		case 'manageAccount':
+			document.getElementById('deleteBTN').onclick =
+				function deleteAccount() {
+					formConfirmContainer.classList.remove('hidden');
+				};
+
+			document.getElementById('logOutBTN').onclick = logOut;
+
+			document.getElementById('generateTokenBTN').onclick = generateToken;
+
+			const deleteAccountResults = document.getElementById(
+				'deleteAccountResults'
+			);
+
+			formDelete.onsubmit = async (e) => {
+				e.preventDefault();
+
+				const confirm = window.confirm(
+					'Are you sure you would like to delete your Lynk account? All of your lynks will be deleted. There is no way to recover your account or lynks.'
+				);
+
+				const url = location.origin;
+
+				if (!confirm) {
+					return;
+				}
+
+				try {
+					const res = await axios.delete(url + '/api/deleteUser', {
+						data: {
+							user: {
+								email: emailInput.value,
+								password: passwordInput.value,
+							},
+						},
+					});
+
+					if (res.status === 200) {
+						deleteAccountResults.innerHTML =
+							'Deleted account and all links.';
+
+						setTimeout(() => {
+							localStorage.setItem(
+								'lynk-security-session-token',
+								undefined
+							);
+							location.href = location.origin;
+						}, 500);
+					}
+				} catch (error) {
+					deleteAccountResults.innerHTML =
+						'Incorrect email or password.';
+				}
+			};
+			break;
+
 		default:
 			break;
 	}
@@ -302,7 +363,7 @@ async function editLynk(row) {
 	let redirectURL = window.prompt('RedirectURL: ');
 
 	if (!validateUrl(redirectURL)) {
-		redirectURL = window.prompt('RedirectURL: ');
+		return;
 	}
 
 	const a = tableAnalytics.rows[row].children[2].children[0];
@@ -348,33 +409,32 @@ async function deleteLynk(row) {
 	}
 }
 
-document.getElementById('deleteBTN').onclick = function deleteAccount() {
-	formConfirmContainer.classList.remove('hidden');
-};
-
-document.getElementById('logOutBTN').onclick = logOut;
-
-formDelete.onsubmit = async (e) => {
-	e.preventDefault();
-
-	try {
-		const res = await axios.delete(location.origin + '/api/deleteUser', {
-			data: {
-				user: {
-					email: emailInput.value,
-					password: passwordInput.value,
-				},
-			},
-		});
-		localStorage.setItem('lynk-security-session-token', undefined);
-		location.href = location.origin;
-	} catch (error) {
-		localStorage.setItem('lynk-security-session-token', undefined);
-		location.href = location.origin;
-	}
-};
-
 function logOut() {
 	localStorage.setItem('lynk-security-session-token', undefined);
 	location.href = location.origin;
+}
+
+async function generateToken() {
+	const email = window.prompt('Email:');
+	const password = window.prompt('Password:');
+
+	try {
+		const res = await axios.post(location.origin + '/api/generateToken', {
+			user: {
+				email,
+				password,
+			},
+		});
+
+		if (res.status === 200) {
+			document.getElementById('manageAccountResults').innerHTML =
+				'Logged out of all session. Re-Logging in with new token..';
+			setTimeout(() => {
+				location.href = location.origin + `/api/auth/${res.data}`;
+			}, 250);
+		}
+	} catch (error) {
+		document.getElementById('manageAccountResults').innerHTML =
+			'Incorrect Email or Password';
+	}
 }

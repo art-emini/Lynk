@@ -11,6 +11,7 @@ import deleteLynk from './api/deleteLynk';
 import deleteMass from './api/deleteMass';
 import deleteUser from './api/deleteUser';
 import editLynk from './api/editLynk';
+import generateToken from './api/generateToken';
 import loginToken from './api/loginToken';
 import loginUser from './api/loginUser';
 import getDate from './api/res/getDate';
@@ -40,6 +41,8 @@ export default function routes(
 
 	getStats(app, lynkDB, userDB);
 	getDate(app, lynkDB, userDB);
+
+	generateToken(app, userDB);
 
 	// delete
 	deleteLynk(app, lynkDB, userDB);

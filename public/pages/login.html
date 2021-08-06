@@ -7,12 +7,12 @@
 		<title>Lynk</title>
 		<link
 			rel="shortcut icon"
-			href="./assets/icon.png"
+			href="../assets/icon.png"
 			type="image/x-icon"
 		/>
 
-		<script src="./js/packages/socket.io.min.js"></script>
-		<script src="./js/packages/axios.min.js"></script>
+		<script src="../js/packages/socket.io.min.js"></script>
+		<script src="../js/packages/axios.min.js"></script>
 
 		<link
 			rel="stylesheet"
@@ -21,25 +21,22 @@
 			crossorigin="anonymous"
 		/>
 
-		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="../css/style.css" />
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-			<a class="navbar-brand a-color-none active">Lynk</a>
+			<a class="navbar-brand a-color" href="/">Lynk</a>
 
 			<div>
 				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link a-color" id="accountPage">Account</a>
-					</li>
 					<li class="nav-item">
 						<a class="nav-link a-color" href="/pages/features.html"
 							>Features</a
 						>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a
-							class="nav-link a-color"
+							class="nav-link a-color-none"
 							id="loginPage"
 							href="/pages/login.html"
 							>Login</a
@@ -66,25 +63,35 @@
 					align-items-center
 					custom-form
 				"
-				action=""
-				method="post"
+				id="loginForm"
 			>
-				<input
-					type="text"
-					placeholder="URL"
-					name="redirectLink"
-					id="redirectLink"
-					class="form-control"
-					title="URL to Shorten"
-					autocomplete="off"
-					required
-				/>
-				<input class="btn btn-default" type="submit" value="Shrink" />
+				<div class="form-group mr-sm-2">
+					<input
+						type="email"
+						class="form-control textInput"
+						id="emailInput"
+						placeholder="Email"
+						required
+					/>
+				</div>
+				<div class="form-group mr-sm-2">
+					<input
+						type="password"
+						class="form-control textInput"
+						id="passwordInput"
+						placeholder="Password"
+						required
+					/>
+				</div>
+				<button type="submit" class="btn btn-default buttonCustom">
+					Login
+				</button>
 			</form>
+
 			<br /><br />
-			<a id="result" class="result" target="_blank" href=""></a>
+			<h3 id="results"></h3>
 		</div>
 
-		<script src="./js/index.js"></script>
+		<script src="../js/login.js"></script>
 	</body>
 </html>

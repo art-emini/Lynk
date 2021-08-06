@@ -92,6 +92,15 @@
 					<br />
 
 					<button
+						class="btn btn-warning mb-lg-3"
+						id="generateTokenBTN"
+					>
+						Re-Generate Session Token
+					</button>
+
+					<br />
+
+					<button
 						class="btn btn-danger mb-lg-3"
 						onclick="deleteAccount()"
 						data-toggle="modal"
@@ -103,6 +112,8 @@
 					</button>
 				</div>
 			</div>
+			<br /><br />
+			<h3 id="manageAccountResults"></h3>
 		</div>
 
 		<div class="hidden" id="formConfirmContainer">
@@ -143,6 +154,8 @@
 					Confirm
 				</button>
 			</form>
+			<br /><br />
+			<h3 class="text-center" id="deleteAccountResults"></h3>
 		</div>
 
 		<script src="../../js/account.js"></script>

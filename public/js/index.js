@@ -22,6 +22,7 @@ socket.on('console', (msg) => console.log(msg));
 	} catch (error) {
 		localStorage.setItem('lynk-security-session-token', undefined);
 		console.log('Invalid Login. Set session token as undefined.');
+		accountPage.style.display = 'none';
 	}
 })();
 

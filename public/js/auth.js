@@ -6,5 +6,7 @@ localStorage.setItem(
 setTimeout(async () => {
 	location.href =
 		location.origin +
-		`/account/${localStorage.getItem('lynk-security-session-token')}`;
+		`/account/${localStorage.getItem(
+			'lynk-security-session-token'
+		)}/analytics`;
 }, 250);

@@ -1,14 +1,14 @@
 import * as express from 'express';
+import { getStatsLimiter } from '../../../middleware/rateLimit';
 import { Low } from '../../../packages/lowdb';
 import Types from '../../../types/types';
-import getAverage from '../../../utils/getAverage';
 
 export default function getStats(
 	app: express.Application,
 	lynkDB: Low<Types.Lynk[]>,
 	userDB: Low<Types.User[]>
 ) {
-	app.post('/api/res/getStats', async (req, res) => {
+	app.post('/api/res/getStats', getStatsLimiter, async (req, res) => {
 		const token = req.body.token;
 
 		await userDB.read();

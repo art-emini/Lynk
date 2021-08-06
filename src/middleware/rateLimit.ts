@@ -55,3 +55,10 @@ export const editLynkLimiter = rateLimit({
 	message:
 		'You have reached the max amount of editLynk calls in 10 minutes. Please try again later.',
 });
+
+export const getStatsLimiter = rateLimit({
+	windowMs: 1000 * 60 * 15,
+	max: 100,
+	message:
+		'You have reached the max amount of getStats calls in 10 minutes. Please try again later.',
+});

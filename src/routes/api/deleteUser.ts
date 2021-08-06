@@ -63,7 +63,7 @@ export default function deleteUser(
 				await lynkDB.write();
 
 				res.status(200);
-				res.redirect('/');
+				res.send('Deleted account and lynks.');
 			} else {
 				res.status(403);
 				res.send('Incorrect email or password');

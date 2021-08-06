@@ -4,6 +4,7 @@ namespace Types {
 		email: string;
 		password: string;
 		token: string;
+		lastLogin: number;
 	}
 
 	export interface UserStripped {

@@ -28,12 +28,13 @@ export default function createUser(
 				email: user.email,
 				password: hashed,
 				token,
+				lastLogin: Number(new Date()),
 			});
 
 			await userDB.write();
 
-			res.status(201);
-			res.redirect(`/api/auth/${token}`);
+			res.status(200);
+			res.send(token);
 			return;
 		} else {
 			res.status(409);

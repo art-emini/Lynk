@@ -12,7 +12,7 @@ export default function createLynk(
 ) {
 	app.post('/api/createLynk', createLynkLimiter, async (req, res) => {
 		const token: string = req.body.token;
-		const redirectUrl: string = req.body.redirectUrl;
+		const redirectUrl = req.body.redirectUrl;
 
 		if (typeof redirectUrl !== 'string') {
 			res.status(400);
@@ -23,6 +23,7 @@ export default function createLynk(
 		if (!validateURL(redirectUrl)) {
 			res.status(400);
 			res.send('Invalid URL.');
+			return;
 		}
 
 		// login with token
