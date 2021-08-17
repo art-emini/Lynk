@@ -12,6 +12,21 @@ export default function createUser(
 	app.post('/api/createUser', createUserLimiter, async (req, res) => {
 		const user: Types.UserStripped = req.body.user;
 
+		// check if password is strong
+
+		if (
+			// eslint-disable-next-line no-useless-escape
+			!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
+				user.password
+			)
+		) {
+			res.status(400);
+			res.send(
+				'Password must contain at least 8 characters consisting of, 1+ lowercase, 1+ uppercase, and 1+ special characters.'
+			);
+			return;
+		}
+
 		// check if email is in use
 		await userDB.read();
 

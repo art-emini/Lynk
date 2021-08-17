@@ -1,5 +1,4 @@
 {
-	"extends": "tslint:latest",
 	"compilerOptions": {
 		"target": "ES6",
 		"module": "commonjs",

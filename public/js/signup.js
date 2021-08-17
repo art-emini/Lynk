@@ -11,6 +11,13 @@ const results = document.getElementById('results');
 signUpForm.onsubmit = async (e) => {
 	e.preventDefault();
 
+	if (!strongPass(passwordInput.value)) {
+		results.innerHTML =
+			'Password must contain at least 8 characters consisting of, 1+ lowercase, 1+ uppercase, and 1+ special characters.';
+
+		return;
+	}
+
 	try {
 		const res = await axios.post(location.origin + '/api/createUser', {
 			user: {
@@ -19,13 +26,24 @@ signUpForm.onsubmit = async (e) => {
 			},
 		});
 
-		results.innerHTML = 'Logging in..';
+		results.innerHTML = 'Created Account! Logging in..';
 		setTimeout(() => {
 			location.href = location.origin + `/api/auth/${res.data}`;
 		}, 250);
 	} catch (error) {
-		results.innerHTML = 'Email already in use.';
+		if (!strongPass(passwordInput.value)) {
+			results.innerHTML =
+				'Password must contain at least 8 characters consisting of, 1+ lowercase, 1+ uppercase, and 1+ special characters.';
+		} else {
+			results.innerHTML = 'Email already in use.';
+		}
 	}
 };
 
 io = undefined;
+
+function strongPass(pass) {
+	return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
+		pass
+	);
+}

@@ -50,7 +50,7 @@ const passwordInput = document.getElementById('passwordInput');
 		console.error(error);
 		localStorage.setItem('lynk-security-session-token', undefined);
 		console.log('Invalid Login. Set session token as undefined.');
-		location.href = location.origin + '/pages/login';
+		location.href = location.origin + '/pages/login.html';
 	}
 	// get stats
 

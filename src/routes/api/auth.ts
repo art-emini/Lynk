@@ -37,7 +37,7 @@ export default function auth(
 			`);
 		} else {
 			res.status(403);
-			res.redirect('/pages/login');
+			res.redirect('/pages/login.html');
 		}
 	});
 }
