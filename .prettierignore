@@ -1,3 +1,4 @@
 *.md
 src/packages
 public/js/packages
+public/js/modules
